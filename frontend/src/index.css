@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+/* -------------------------------------------------------------------------
+   设计令牌：湖绿为主色、夕阳橙为强调色，整体偏柔和自然。
+   颜色全部走 CSS 变量，后续换肤只改这里。
+   ------------------------------------------------------------------------- */
+@theme {
+  --color-lake-50: #f0fbf8;
+  --color-lake-100: #d5f4ec;
+  --color-lake-200: #a9e8da;
+  --color-lake-300: #74d5c2;
+  --color-lake-400: #41bba6;
+  --color-lake-500: #1e9f8b;
+  --color-lake-600: #128071;
+  --color-lake-700: #10665c;
+  --color-lake-800: #0f514a;
+  --color-lake-900: #0d433e;
+
+  --color-sun-50: #fff8ed;
+  --color-sun-100: #ffefd4;
+  --color-sun-200: #ffdba8;
+  --color-sun-300: #ffc071;
+  --color-sun-400: #ff9d38;
+  --color-sun-500: #f97f13;
+  --color-sun-600: #e06409;
+
+  --color-ink: #16302b;
+  --color-ink-soft: #4a635d;
+
+  --font-sans: "PingFang SC", "HarmonyOS Sans SC", "Microsoft YaHei", system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+
+  --radius-card: 1.5rem;
+  --shadow-soft: 0 12px 30px -12px rgb(16 60 52 / 0.18);
+}
+
+/* 移动端优先：桌面打开时居中成手机宽度，背景留白给氛围 */
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #eef4f2;
+  background-image: radial-gradient(circle at 12% 8%, #d9f2ea 0%, transparent 42%),
+    radial-gradient(circle at 88% 0%, #ffedd8 0%, transparent 38%);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 隐藏滚动条但保留滚动能力，页面更像原生 App */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+/* 卡片入场：轻微上浮，统一节奏，避免每个页面各写一套动画 */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-rise {
+  animation: rise 0.36s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
